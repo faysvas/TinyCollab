@@ -3,7 +3,7 @@
 UserCake Version: 2.0.2
 http://usercake.com
 */
-require_once("../models/db-settings.php");
+require_once(__DIR__."/usercake/models/db-settings.php");
 
 echo "
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
@@ -18,7 +18,7 @@ echo "
 <body>
 <div id='top'><div id='logo'></div></div>
 <div id='content'>
-<h1>UserCake</h1>
+<h1>Tiny Collab</h1>
 <h2>Installer</h2>";	
 
 if(isset($_GET["install"]))
@@ -143,13 +143,14 @@ if(isset($_GET["install"]))
 	(13, 2, 17);
 	";
 
-$documents_sql =	"CREATE TABLE IF NOT EXISTS `documents` (`id` int(11) NOT NULL,`name` varchar(255) CHARACTER SET ascii NOT NULL) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;"
+$documents_sql =	"CREATE TABLE IF NOT EXISTS `documents` (`id` int(11) NOT NULL,`name` varchar(255) CHARACTER SET ascii NOT NULL) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;";
 
 $user_to_files_sql ="CREATE TABLE IF NOT EXISTS `user_to_file` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `file_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;	"
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
+
 	$stmt = $mysqli->prepare($configuration_sql);
 	if($stmt->execute())
 	{

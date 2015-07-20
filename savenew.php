@@ -9,7 +9,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 //text, text_id, filename
 
  $filename=$_POST['filename'];
-
+global $file_directory;
 function debug_to_console( $data ) {
 
     if ( is_array( $data ) )
@@ -35,10 +35,10 @@ $last_file_id=$mysqli->insert_id;
 
 
 
-            $file = fopen("file:///C:/textfiles/text".$last_file_id.".txt","a+");
+            $file = fopen($file_directory.$last_file_id.".txt","a+");
            
            
-            file_put_contents("file:///C:/textfiles/text".$last_file_id.".txt", "");
+            file_put_contents($file_directory.$last_file_id.".txt", "");
             fclose($file);
 ?>
 
@@ -65,8 +65,8 @@ $user_id = $loggedInUser->user_id;
 
 $file_id = $last_file_id;
 $stmt->execute();
-  
-  echo $last_file_id;
+ $_SESSION["text_id"]=$last_file_id; 
+  //echo $last_file_id;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;
 

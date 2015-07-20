@@ -39,6 +39,7 @@
 
        <?php
         require_once("userCake/models/config.php");
+        require_once("userCake/models/db-settings.php"); //Require DB connection
    
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
@@ -189,9 +190,10 @@ echo implode($result);
 
         <textarea class="form-control"  rows="25" id="myform2" name="myform2" ><?php
 //na vrw giati de vgazi swsta ta display names kai molis ta vrw na ftiaxw mia lista pou tha exei ta onomata
-
- $file="C:/textfiles/text".$_SESSION["text_id"].".txt";
-
+if(isset($file_directory)){
+  global $file_directory;
+ $file=$file_directory.$_SESSION["text_id"].".txt";
+}
  //$file_handler = fopen($file, "r");  
 
     // to open a local file use this instead  

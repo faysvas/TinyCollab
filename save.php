@@ -8,7 +8,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
  <?php 
 //text, text_id, filename
  $text=$_POST['text'];
- $text_id=$_POST['text_id'];
+ $text_id=$_SESSION["text_id"];
  $filename=$_POST['filename'];
 
  function debug_to_console( $data ) {
@@ -23,10 +23,10 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 debug_to_console("in save");
 
        
- $file = fopen("file:///C:/textfiles/text".$text_id. ".txt","a+");
+ $file = fopen($file_directory.$text_id. ".txt","a+");
            
             
-            file_put_contents("file:///C:/textfiles/text".$text_id.".txt", $text);
+            file_put_contents($file_directory.$text_id.".txt", $text);
             fclose($file);
 
  

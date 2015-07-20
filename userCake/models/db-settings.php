@@ -4,12 +4,25 @@ UserCake Version: 2.0.2
 http://usercake.com
 */
 
+//File directory information
+//Put your file directory here
+
+
+
+$db_host = "localhost"; //Host address (most likely localhost)
+$db_name = "user736_db1"; //Name of Database
+$db_user = "user736"; //Name of database user
+$db_pass = "F2mlW2Er"; //Password for database user
+$db_table_prefix = "uc_";
+
+/*
 //Database Information
 $db_host = "localhost"; //Host address (most likely localhost)
 $db_name = "texteditor"; //Name of Database
 $db_user = "root"; //Name of database user
 $db_pass = ""; //Password for database user
 $db_table_prefix = "uc_";
+*/
 
 GLOBAL $errors;
 GLOBAL $successes;
