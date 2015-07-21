@@ -118,7 +118,7 @@ if(!empty($_POST))
            <div class="col-xs-4 centercontents center-block">
 
 <div id='regbox'>
-<form name='newUser' action='".$_SERVER['PHP_SELF']."' method='post'>
+<form name='newUser' action='register.php' method='post'>
 
 <p>
 <label >User Name:</label>
