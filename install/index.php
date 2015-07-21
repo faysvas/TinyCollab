@@ -3,7 +3,7 @@
 UserCake Version: 2.0.2
 http://usercake.com
 */
-require_once(__DIR__."/usercake/models/db-settings.php");
+require_once("../usercake/models/db-settings.php");
 
 echo "
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
@@ -82,9 +82,9 @@ if(isset($_GET["install"]))
 	
 	$configuration_entry = "
 	INSERT INTO `".$db_table_prefix."configuration` (`id`, `name`, `value`) VALUES
-	(1, 'website_name', 'UserCake'),
+	(1, 'website_name', 'TinyCollab'),
 	(2, 'website_url', 'localhost/'),
-	(3, 'email', 'noreply@ILoveUserCake.com'),
+	(3, 'email', 'noreply@ILoveTinyCollab.com'),
 	(4, 'activation', 'false'),
 	(5, 'resend_activation_threshold', '0'),
 	(6, 'language', 'models/languages/en.php'),
@@ -304,7 +304,7 @@ $stmt = $mysqli->prepare($user_to_files_sql);
 else
 {
 	echo "
-	<a href='?install=true'>Install UserCake</a>
+	<a href='?install=true'>Install TinyCollab</a>
 	";
 }
 

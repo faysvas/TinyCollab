@@ -44,7 +44,7 @@
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 require_once("userCake/models/header.php");
-if(!isUserLoggedIn()) { require_once("usercake/login.php"); die(); }
+if(!isUserLoggedIn()) { require_once("userCake/login.php"); die(); }
 ?>      
 
 <?php
@@ -115,7 +115,7 @@ for ($x = 1; $x <= $mysqli->affected_rows; $x++) {
                         <li class="active nav-item sr-only"><a class="scrollto" href="index.php">Home</a></li>
                      
                                       
-                        <li class="nav-item last"><a href="usercake/logout.php">Logout</a></li>
+                        <li class="nav-item last"><a href="userCake/logout.php">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->

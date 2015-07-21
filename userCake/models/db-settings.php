@@ -10,9 +10,9 @@ http://usercake.com
 
 
 $db_host = "localhost"; //Host address (most likely localhost)
-$db_name = "user736_db1"; //Name of Database
-$db_user = "user736"; //Name of database user
-$db_pass = "F2mlW2Er"; //Password for database user
+$db_name = "TinyCollab"; //Name of Database
+$db_user = "root"; //Name of database user
+$db_pass = ""; //Password for database user
 $db_table_prefix = "uc_";
 
 /*
