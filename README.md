@@ -20,7 +20,7 @@ $ node server.js
 (Απαραίτητη προϋπόθεση για αυτό το βήμα είναι να έχετε εγκατεστημένο το node.js)
 
 ## Πρόσθετες βιβλιοθήκες που έχουν χρησιμοποιηθεί
-[markItUp!](https://www.github.com) Universal markup jQuery editor
-[sock.js](https://github.com/sockjs) WebSocket emulation
-[usercake](http://usercake.com/) The fully open source user management script
+* [markItUp!](https://www.github.com) Universal markup jQuery editor
+* [sock.js](https://github.com/sockjs) WebSocket emulation
+* [usercake](http://usercake.com/) The fully open source user management script
 
