@@ -40,7 +40,7 @@
        <?php
         require_once("userCake/models/config.php");
         require_once("userCake/models/db-settings.php"); //Require DB connection
-   
+
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 require_once("userCake/models/header.php");
@@ -160,6 +160,8 @@ echo implode($result);
     </div>
 </div>
 </div>
+
+</div>
 </row>
 
 
@@ -171,6 +173,7 @@ echo implode($result);
    <input class="form-control"  type="text" name="add_user" id="add_user" value="" ><br/>
         <input class="btn btn-default"  type="button" value ="Add a collaborator" onclick="AddUser()" />
         <div id="notify"></div>
+       // if (!empty($rows))
 <div class="list-group"><?php foreach($rows as $val) {?><div id="<?php echo implode( ',', $val) ;?>"><?php $name=implode( ',', $val) ; echo trim($name);}?>
 </div>
 </div>         
@@ -192,7 +195,7 @@ echo implode($result);
 //na vrw giati de vgazi swsta ta display names kai molis ta vrw na ftiaxw mia lista pou tha exei ta onomata
 if(isset($file_directory)){
   global $file_directory;
- $file=$file_directory.$_SESSION["text_id"].".txt";
+ $file=$file_directory."/text".$_SESSION["text_id"].".txt";
 }
  //$file_handler = fopen($file, "r");  
 

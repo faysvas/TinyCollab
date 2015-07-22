@@ -38,8 +38,9 @@ if($("#myform2").val()!=content.message)
 $('#myform2').val(content.message)
  //$("#myform2").setSelectionRange(start, end);
  
+
  //list_id="#names "+username;
- //$(list_id).css('color', 'red')
+ $( "div:contains('"+username+"')" ).css('color', 'red')
  //na ginetai kokkino to xrwma, na perimenei ligaki kai meta na xanaginetai mavro
 }
 

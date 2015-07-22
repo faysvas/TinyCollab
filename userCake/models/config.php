@@ -9,7 +9,7 @@ require_once("db-settings.php"); //Require DB connection
 //File directory information
 //Put your file directory here
 global $file_directory;
-$file_directory="/home/user736/textfiles";
+$file_directory="C:/textfiles";
 //$file_directory="C:/textfiles/text";
 $file_directory="file:///".$file_directory;
 

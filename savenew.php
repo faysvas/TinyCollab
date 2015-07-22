@@ -21,7 +21,7 @@ function debug_to_console( $data ) {
 }
 debug_to_console("in save new");
 
-    if(!file_exists($filename.".txt")){
+    if(!file_exists($filename."/text.txt")){
                 $file = tmpfile();
             }
 //Na dinetai ena displayname gia to keimeno alla afto tha apothikevetai me vash to id
@@ -35,10 +35,10 @@ $last_file_id=$mysqli->insert_id;
 
 
 
-            $file = fopen($file_directory.$last_file_id.".txt","a+");
+            $file = fopen($file_directory."/text".$last_file_id.".txt","a+");
            
            
-            file_put_contents($file_directory.$last_file_id.".txt", "");
+            file_put_contents($file_directory."/text".$last_file_id.".txt", "");
             fclose($file);
 ?>
 

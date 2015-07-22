@@ -40,18 +40,19 @@ $result=$result->fetch_assoc();
 //print_r($user_id);
  //edw ginetai elegxos an epestrepse apotelesmata
 
+if (!empty($result['id'])) { 
 
 $stmt = $mysqli->prepare("SELECT * FROM user_to_file WHERE (user_id=? AND file_id=?)");
 $stmt->bind_param("ii",$user_id,$file_id );
-//$stmt->bind_param("isis",$user_id1,$file_id1,$user_id2,$file_id2 );
+
 
 // set parameters and execute
-$user_id = $user_id; //afto prepei na einai logika
+$user_id = $user_id; 
 
 $file_id= $text_id;
-//$user_id2 = $user_id; //afto prepei na einai logika
 
-//$file_id2 = $text_id;
+
+
 $stmt->execute();
 
 $found = $stmt->get_result();
@@ -77,6 +78,7 @@ $stmt->execute();
 
 //}
 
+}
 }
  
   header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -23,10 +23,10 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 debug_to_console("in save");
 
        
- $file = fopen($file_directory.$text_id. ".txt","a+");
+ $file = fopen($file_directory."/text".$text_id. ".txt","a+");
            
             
-            file_put_contents($file_directory.$text_id.".txt", $text);
+            file_put_contents($file_directory."/text".$text_id.".txt", $text);
             fclose($file);
 
  
