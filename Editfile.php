@@ -217,7 +217,7 @@ if(filesize($file)==0)
       <div class="col-md-2">
         
         
-        <textarea readonly rows="20" class="form-control" style="resize:none;" id="chat" name="chat"  >Welcome!</textarea>
+        <textarea readonly style="margin: 0px -0.171875px 0px 0px; height: 419px; width: 234px;resize:none;" class="form-control"  id="chat" name="chat"  >Welcome!</textarea>
 
 
         <input type="text" class="form-control" name="message" id="message" value="" ><br/>
