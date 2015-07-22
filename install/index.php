@@ -1,16 +1,16 @@
 <?php 
 /*
-UserCake Version: 2.0.2
-http://usercake.com
+userCake Version: 2.0.2
+http://userCake.com
 */
-require_once("../usercake/models/db-settings.php");
+require_once("../userCake/models/db-settings.php");
 
 echo "
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<title>UserCake</title>
+<title>userCake</title>
 <link href='../models/site-templates/default.css' rel='stylesheet' type='text/css' />
 <script src='../models/funcs.js' type='text/javascript'>
 </script>
@@ -82,9 +82,9 @@ if(isset($_GET["install"]))
 	
 	$configuration_entry = "
 	INSERT INTO `".$db_table_prefix."configuration` (`id`, `name`, `value`) VALUES
-	(1, 'website_name', 'TinyCollab'),
+	(1, 'website_name', 'userCake'),
 	(2, 'website_url', 'localhost/'),
-	(3, 'email', 'noreply@ILoveTinyCollab.com'),
+	(3, 'email', 'noreply@ILoveuserCake.com'),
 	(4, 'activation', 'false'),
 	(5, 'resend_activation_threshold', '0'),
 	(6, 'language', 'models/languages/en.php'),
@@ -143,12 +143,17 @@ if(isset($_GET["install"]))
 	(13, 2, 17);
 	";
 
-$documents_sql =	"CREATE TABLE IF NOT EXISTS `documents` (`id` int(11) NOT NULL,`name` varchar(255) CHARACTER SET ascii NOT NULL) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;";
+$documents_sql =	"CREATE TABLE IF NOT EXISTS
+ `documents` (`id` int(11) NOT NULL  AUTO_INCREMENT,
+ 	`name` varchar(255) CHARACTER SET ascii NOT NULL,
+ 	PRIMARY KEY (`id`))
+ 	 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;";
 
 $user_to_files_sql ="CREATE TABLE IF NOT EXISTS `user_to_file` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL  AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `file_id` int(11) NOT NULL
+  `file_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
 
 	$stmt = $mysqli->prepare($configuration_sql);
@@ -304,7 +309,7 @@ $stmt = $mysqli->prepare($user_to_files_sql);
 else
 {
 	echo "
-	<a href='?install=true'>Install TinyCollab</a>
+	<a href='?install=true'>Install userCake</a>
 	";
 }
 
