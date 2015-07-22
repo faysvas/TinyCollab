@@ -4,6 +4,18 @@ UserCake Version: 2.0.2
 http://usercake.com
 */
 
+function debug_to_console( $data ) {
+
+    if ( is_array( $data ) )
+        $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+    else
+        $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+$string = trim(preg_replace('/\s\s+/', ' ', $output));
+    echo $string;
+}
+
+
+
 require_once("models/config.php");
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
@@ -34,6 +46,8 @@ if(!empty($_POST))
 		if(!usernameExists($username))
 		{
 			$errors[] = lang("ACCOUNT_USER_OR_PASS_INVALID");
+		
+			
 		}
 		else
 		{
@@ -72,14 +86,17 @@ if(!empty($_POST))
 					$_SESSION["userCakeUser"] = $loggedInUser;
 					
 					//Redirect to user account page
-				header('Location: ../index.php');
-
-					die();
+		
 				}
 			}
 		}
 	}
+debug_to_console($errors);
+		header('Location: ../index.php');
+
+					die();
 }
+
 
 require_once("models/header.php");
 ?>
@@ -138,6 +155,14 @@ require_once("models/header.php");
 
            <div class="col-xs-4 centercontents center-block">
 <form name='login' action='usercake/login.php' method='post'>
+<p id="errors">
+	<?php
+
+echo resultBlock($errors,$successes);
+
+
+	 ?>
+</p>
 <p>
 <label>Username:</label>
 <input class="form-control" type='text' name='username' />
@@ -169,7 +194,11 @@ require_once("models/header.php");
     </section><!--//promo-->
 
 
-
+<script>
+$(document).ready(function() {
+$("#errors").text(<?php echo implode($errors) ?>)
+});
+</script>
 </body>
 </html>
 

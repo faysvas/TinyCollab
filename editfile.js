@@ -1,9 +1,9 @@
 
-function AddUser(){
-    if($("#add_user").val() != '') {
-$('#inset_form').html('<form action="add_user.php" name="form" method="post" style="display:none;"><input type="text" name="username" value="' + $("#add_user").val() + '" /><input type="text" name="text_id" value="' + $("#text_id").val() + '" /></form><input type="submit" name="inset_form" value="Submit form">');
+function addUser(){
+if($("#add_user").val() != '') {
+//$('#inset_form').html('<form action="add_user.php" name="form" method="post" style="display:none;"><input type="text" name="username" value="' + $("#add_user").val() + '" /><input type="text" name="text_id" value="' + $("#text_id").val() + '" /></form><input type="submit" name="inset_form" value="Submit form">');
    
-document.forms['form'].submit();
+//document.forms['form'].submit();
  // 1. Create XHR instance - Start
     var xhr;
     if (window.XMLHttpRequest) {
@@ -23,6 +23,8 @@ document.forms['form'].submit();
             if (xhr.status == 200 && xhr.status < 300) {
             //Na tupwnei ena minima oti prosthese to xrhsth
          //   $('#text_id').val($.trim(xhr.responseText));
+         location.reload();
+  
            
             }
         }
@@ -34,13 +36,13 @@ document.forms['form'].submit();
     // 3. Specify your action, location and Send to the server - Start 
     xhr.open('POST', 'add_user.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("text=_id" + $('#text_id').val()+"&username=" + $('#adduser').val());
-
+    xhr.send("text_id=" + $('#text_id').val()+"&username=" + $('#add_user').val());
+console.log("in add")
     // 3. Specify your action, location and Send to the server - End
 }
 else
 {
-    $("#notify").html("username cannot be emtpty")
+    $("#notify").html("username cannot be empty")
 }
 
 }
@@ -145,5 +147,6 @@ function doSomething()
 
 { console.log("dsfdsf")
     $( "#save" ).trigger( "click" );
+
 
 }

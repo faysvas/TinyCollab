@@ -63,12 +63,12 @@ $string = trim(preg_replace('/\s\s+/', ' ', $output));
     echo $string;
 }
 
-debug_to_console($_SESSION["text_id"]);
+debug_to_console("the session id ".$_SESSION["text_id"]);
 require_once("userCake/models/db-settings.php"); //Require DB connection
 if ($stmt = $mysqli->prepare("SELECT uc_users.user_name FROM uc_users INNER JOIN user_to_file ON uc_users.id= user_to_file.user_id WHERE user_to_file.file_id=?")) {
 
     /* bind parameters for markers */
-    $stmt->bind_param("i", $_POST['text_id']);
+    $stmt->bind_param("i", $_SESSION['text_id']);
 
     /* execute query */
     /* execute query */
@@ -122,29 +122,30 @@ for ($x = 1; $x <= $mysqli->affected_rows; $x++) {
         </div>
     </header><!--//header-->
 
-
+<!--//main-->
       <section id="about" class="promo section">
         <div class="container-fluid">
      <div class="row">   
 
       <div class="col-md-2">
-  <div class="form-group">      
-<div class="row">
- 
-    <div class="thumbnail">
-        <div class="caption">
 
-         <form name="openfile" id="openfile" method="post" action="save.php">
+    <div class="row">
+ <div class="form-group">  
+
+               <div class="thumbnail">
+                <div class="caption">
+                  <form name="openfile" id="openfile" method="post" action="save.php">
          
+
+
  
-                                                     
-            <input type="hidden" name="text_id" value="<?php echo $_SESSION['text_id'] ?>" id="text_id">
+                 <input type="hidden" name="text_id" value="<?php echo $_SESSION['text_id'] ?>" id="text_id">
           
-           <div id="username"><?php echo "$loggedInUser->displayname"." " ?>you are editing 
+           <div id="username"><?php echo "$loggedInUser->displayname"." " ?>you are editing file: 
 
 <?php
 
- $text_id=$_SESSION["text_id"];
+$text_id=$_SESSION["text_id"];
 $stmt = $mysqli->prepare("SELECT name FROM documents WHERE id = ?");
 $stmt->bind_param("i",$text_id);
 
@@ -153,38 +154,38 @@ $text_id = $text_id;
 
 $stmt->execute();
 
- $result = $stmt->get_result();
+$result = $stmt->get_result();
 $result=$result->fetch_assoc();
 echo implode($result);
 ?>
-    </div>
-</div>
-</div>
-
-</div>
-</row>
-
-
-
-
-
-           
-
-   <input class="form-control"  type="text" name="add_user" id="add_user" value="" ><br/>
-        <input class="btn btn-default"  type="button" value ="Add a collaborator" onclick="AddUser()" />
-        <div id="notify"></div>
-       // if (!empty($rows))
-<div class="list-group"><?php foreach($rows as $val) {?><div id="<?php echo implode( ',', $val) ;?>"><?php $name=implode( ',', $val) ; echo trim($name);}?>
-</div>
-</div>         
          
-
-        </form>
-      </div>
+          </div>
+          </form>
     </div>
-  
 </div>
+
+
+
+    
+         <input class="form-control"  type="text" name="add_user" id="add_user" value="" ><br/>
+          <input class="btn btn-default"  type="button" value ="Add a collaborator"  onclick="addUser();"/>  
+          <div id="notify"></div>
+           <div class="list-group">
+
+            <?php foreach($rows as $val) {?>
+             <div> 
+              <?php $name=implode( ',', $val) ; echo trim($name); ?>   </div>
+              <?php } ?>
+          
+           </div>
+
+</div>
+</div>
+
+
          </div>
+
+
       
       <div class="col-md-8">
 
@@ -227,6 +228,7 @@ if(filesize($file)==0)
 
         <input type="text" class="form-control" name="message" id="message" value="" ><br/>
         <input class="edit btn btn-default"  type="button" value ="Send" onclick="sendMessage();" />
+
 
          
 </div>

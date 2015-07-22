@@ -38,8 +38,11 @@ $last_file_id=$mysqli->insert_id;
             $file = fopen($file_directory."/text".$last_file_id.".txt","a+");
            
            
-            file_put_contents($file_directory."/text".$last_file_id.".txt", "");
+            if(file_put_contents($file_directory."/text".$last_file_id.".txt", ""))
+             
+            
             fclose($file);
+           echo "File Created!";
 ?>
 
  <?php 

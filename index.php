@@ -22,9 +22,9 @@
         require_once("userCake/models/config.php");
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
-require_once("userCake/models/header.php");
+//require_once("userCake/models/header.php");
 require_once("userCake/models/db-settings.php");
-  if(!isUserLoggedIn()) { require_once("usercake/login.php"); die(); }
+  if(!isUserLoggedIn()) { require_once("userCake/login.php"); die(); }
 ?>   
 </head>
     <body data-spy="scroll">
@@ -50,7 +50,7 @@ require_once("userCake/models/db-settings.php");
                         <li class="active nav-item sr-only"><a class="scrollto" href="index.php">Home</a></li>
                      <li class="nav-item  ">   <div style="color:#0a7396">Filename:</div></li>
                           <li class="nav-item  "> <form class="form-inline"><div id="notification" ></div><div class="form-group"><input style="color=black;" class="form-control" value="" id="filename"></div><button type="button" class="newfile btn btn-default" id="newfile" value="New File" >New File </button> </form></li>                
-                        <li class="nav-item last"><a href="usercake/logout.php">Logout</a></li>
+                        <li class="nav-item last"><a href="userCake/logout.php">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->
@@ -64,7 +64,7 @@ require_once("userCake/models/db-settings.php");
        
               <?php
 
-if ($stmt = $mysqli->prepare("SELECT documents.name, user_to_file.file_id FROM (documents INNER JOIN user_to_file ON documents.id= user_to_file.file_id) WHERE user_to_file.user_id=?")) {
+if ($stmt = $mysqli->prepare("SELECT documents.name, user_to_file.file_id FROM (documents INNER JOIN user_to_file ON documents.id= user_to_file.file_id) WHERE user_to_file.user_id=? ORDER BY documents.id DESC")) {
 
     /* bind parameters for markers */
     $stmt->bind_param("i", $loggedInUser->user_id);
@@ -147,20 +147,44 @@ document.forms['form'].submit();
 
 });
 
-$("#newfile").click(function(){
- 
- if($("#filename").val() != '') {
-$('#inset_form').html('<form action="savenew.php" name="form" method="post" style="display:none;"><input type="text" name="filename" value="' + $("#filename").val() + '" /></form><input type="submit" name="inset_form" value="Submit form">');
-   
-document.forms['form'].submit();
-}
-else
-{
-$("#notification").html("Filename cannot be emtpty")
-}
+  $('#newfile').click(function() {
+// 1. Create XHR instance - Start
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    else {
+        throw new Error("Ajax is not supported by this browser");
+    }
+    // 1. Create XHR instance - End
+    
+    // 2. Define what to do when XHR feed you the response from the server - Start
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200 && xhr.status < 300) {
+            location.reload();
+           // $("#notification").text($.trim(xhr.responseText))    
+            }
+        }
+    }
+    // 2. Define what to do when XHR feed you the response from the server - Start
+
+   // var userid = document.getElementById("userid").value;
+
+    // 3. Specify your action, location and Send to the server - Start 
+    xhr.open('POST', 'savenew.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("filename=" + $('#filename').val());
+
+    // 3. Specify your action, location and Send to the server - End   
+    });
 
 
-});
+
+
 </script>
 
     </body>
