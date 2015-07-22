@@ -1,4 +1,23 @@
 // Create a connection to http://localhost:9999/echo
+
+$.extend( $.expr[":"], {
+    containsExact: $.expr.createPseudo ?
+        $.expr.createPseudo(function(text) {
+            return function(elem) {
+                return $.trim(elem.innerHTML.toLowerCase()) === text.toLowerCase();
+            };
+        }) :
+        // support: jQuery <1.8
+        function(elem, i, match) {
+            return $.trim(elem.innerHTML.toLowerCase()) === match[3].toLowerCase();
+        },
+});
+
+
+
+
+
+
 var sock = new SockJS('http://localhost:9999/echo');
 
 // Open the connection
@@ -15,21 +34,21 @@ sock.onclose = function() {
 sock.onmessage = function(e) {
   // Get the content
   var content = JSON.parse(e.data);
-
+console.log("this"+content.username+"that");
 if(content.text_id==$('#text_id').val() ){
 
 if (content.chat==""){
 
-$("div").filter(function() {
-    return $(this).text() === content.username;
-}).css("font-weight", "bold");
+$("#"+content.username).css("color", "red");
 
 
  
- setTimeout(
-     
-        2000
-    );
+ 
+ setTimeout(function(){
+  $("#"+content.username).css("color", "white");
+}, 1000);
+
+  
 
   var start = $("#myform2").selectionStart,
         end = $("#myform2").selectionEnd;
@@ -40,7 +59,7 @@ $('#myform2').val(content.message)
  
 
  //list_id="#names "+username;
- $( "div:contains('"+username+"')" ).css('color', 'red')
+ //$( "div:contains('"+username+"')" ).css('color', 'red')
  //na ginetai kokkino to xrwma, na perimenei ligaki kai meta na xanaginetai mavro
 }
 

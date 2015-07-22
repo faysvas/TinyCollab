@@ -141,7 +141,7 @@ for ($x = 1; $x <= $mysqli->affected_rows; $x++) {
  
                  <input type="hidden" name="text_id" value="<?php echo $_SESSION['text_id'] ?>" id="text_id">
           
-           <div id="username"><?php echo "$loggedInUser->displayname"." " ?>you are editing file: 
+           <div ><span id="username"><?php echo "$loggedInUser->displayname"?></span> you are editing file: 
 
 <?php
 
@@ -170,14 +170,8 @@ echo implode($result);
          <input class="form-control"  type="text" name="add_user" id="add_user" value="" ><br/>
           <input class="btn btn-default"  type="button" value ="Add a collaborator"  onclick="addUser();"/>  
           <div id="notify"></div>
-           <div class="list-group">
-
-            <?php foreach($rows as $val) {?>
-             <div> 
-              <?php $name=implode( ',', $val) ; echo trim($name); ?>   </div>
-              <?php } ?>
-          
-           </div>
+           <div class="list-group"><?php foreach($rows as $val) {?><div id=<?php $name=implode( ',', $val) ; echo trim($name); ?> ><?php $name=implode( ',', $val) ; echo trim($name); ?></div>
+              <?php } ?></div>
 
 </div>
 </div>
