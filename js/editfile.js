@@ -123,7 +123,7 @@ function updateInfo() {
 }
 
 
-var iFrequency = 5000; // expressed in miliseconds
+var iFrequency = 1000; // expressed in miliseconds
 var myInterval = 0;
 
 // STARTS and Resets the loop if any

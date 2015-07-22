@@ -96,7 +96,7 @@ for ($x = 1; $x <= $mysqli->affected_rows; $x++) {
     <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
-                <a class="scrollto" href="#promo">
+                <a class="scrollto" href="index.php">
                     <span class="logo-title">Tiny Collab</span>
                 </a>
             </h1><!--//logo-->              
@@ -114,7 +114,7 @@ for ($x = 1; $x <= $mysqli->affected_rows; $x++) {
 
                         <li class="active nav-item sr-only"><a class="scrollto" href="index.php">Home</a></li>
                      
-                                      
+                        <li class="nav-item "><a href="index.php">Browse Files</a></li>              
                         <li class="nav-item last"><a href="userCake/logout.php">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->

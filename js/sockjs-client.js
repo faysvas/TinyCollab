@@ -46,7 +46,7 @@ $("#"+content.username).css("color", "red");
  
  setTimeout(function(){
   $("#"+content.username).css("color", "white");
-}, 1000);
+}, 1500);
 
   
 

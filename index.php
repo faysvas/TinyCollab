@@ -31,7 +31,7 @@ require_once("userCake/models/db-settings.php");
           <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
-                <a class="scrollto" href="#promo">
+                <a class="scrollto" href="index.php">
                     <span class="logo-title">Tiny Collab</span>
                 </a>
             </h1><!--//logo-->              
