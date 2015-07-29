@@ -48,8 +48,9 @@ require_once("userCake/models/db-settings.php");
                     <ul class="nav navbar-nav">
 
                         <li class="active nav-item sr-only"><a class="scrollto" href="index.php">Home</a></li>
+                       <li class="nav-item  ">   <div id="notification" ></div></li>
                      <li class="nav-item  ">   <div style="color:#0a7396">Filename:</div></li>
-                          <li class="nav-item  "> <form class="form-inline"><div id="notification" ></div><div class="form-group"><input style="color=black;" class="form-control" value="" id="filename"></div><button type="button" class="newfile btn btn-default" id="newfile" value="New File" >New File </button> </form></li>                
+                          <li class="nav-item  "> <form class="form-inline"><div class="form-group"><input style="color=black;" class="form-control" value="" id="filename"></div><button type="button" class="newfile btn btn-default" id="newfile" value="New File" >New File </button> </form></li>                
                         <li class="nav-item last"><a href="userCake/logout.php">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -140,7 +141,7 @@ if ($stmt = $mysqli->prepare("SELECT documents.name, user_to_file.file_id FROM (
 $(".edit").click(function(){
   var text_id = this.id;
 
-$('#inset_form').html('<form action="Editfile.php" name="form" method="post" style="display:none;"><input type="text" name="text_id" value="' + text_id + '" /></form><input type="submit" name="inset_form" value="Submit form">');
+$('#inset_form').html('<form  action="Editfile.php" name="form" method="post" style="display:none;"><input type="text" name="text_id" value="' + text_id + '" /></form><input style="display:none;" type="submit" name="inset_form" value="Submit form">');
    
 document.forms['form'].submit();
 
@@ -148,6 +149,11 @@ document.forms['form'].submit();
 });
 
   $('#newfile').click(function() {
+    if ($('#filename').val()==''){
+
+        $('#notification').text("Filename cannot be empty")
+    }
+    else{
 // 1. Create XHR instance - Start
     var xhr;
     if (window.XMLHttpRequest) {
@@ -180,6 +186,7 @@ document.forms['form'].submit();
     xhr.send("filename=" + $('#filename').val());
 
     // 3. Specify your action, location and Send to the server - End   
+}
     });
 
 
